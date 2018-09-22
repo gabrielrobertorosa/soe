@@ -22,7 +22,7 @@ var winText;
 
 
 var letter;
-var arrayOfWord = ['fdfdfggdgd'];
+var arrayOfWord = ['thunder'];
 var arrayOfLetters=[];
 var mainState = {
 	preload:function(){
@@ -79,7 +79,7 @@ var mainState = {
 		scoreText = game.add.text(0,550, 'Score: ', {font: '32px sans', fill: '#FFF'});
 		winText = game.add.text(game.world.centerX, game.world.centerY, 'YOU WIN!!!' , {font: '32px sans', fill: '#FFF'});
 		winText.visible = false;
-	},
+		},
 
 	update:function(){
 
