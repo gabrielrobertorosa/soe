@@ -3,6 +3,7 @@ var spacefield,
 	backgroundv,
 	player,
 	cursors,
+	health=3,
 	bullets,
 	bulletTime = 0,
 	fireButton,
@@ -13,7 +14,7 @@ var spacefield,
 	winText,
 	letter,
 	sortedWord,
-	arrayOfWord = ['thunder'],
+	arrayOfWord = [''],
 	arrayOfLetters = [];
 
 initializeGame();
@@ -44,6 +45,10 @@ function initializeGame() {
 				game.physics.arcade.overlap(bullets, enemies, collisionHandler, null, this);
 
 				game.physics.arcade.overlap(bullets, specialEnemies, specialCollisionHandler, null, this);
+
+				game.physics.arcade.overlap(player, enemies, deathToggle, null, this);
+
+				game.physics.arcade.overlap(player, specialEnemies, deathToggle, null, this);
 
 				player.body.velocity.x = 0;//reseta o movimento quando a tecla é solta
 
@@ -208,3 +213,17 @@ function specialCollisionHandler(bullet, specialEnemy) {
 	var $image = $($("img[class='"+l+"']")[0]);
 	$image.attr("src","./assets/letters/"+l+".png").removeClass(l);
 };
+
+function deathToggle(enemies) {
+
+    if (player.alive)
+    {
+        player.kill();
+     
+    }
+    else
+    {
+        player.reset(game.world.centerX, game.world.centerY);
+    }
+
+}
