@@ -1,6 +1,6 @@
 function startPlayer() {
     player = game.add.sprite(400, 500, 'ship');
-    //CHANGE
+    //CHANGE 
     player.health = 100;
     player.anchor.setTo(0.5, 0.5);
     game.physics.enable(player, Phaser.Physics.ARCADE);
@@ -26,8 +26,8 @@ function startBulletPlayer() {
 
 function startPlayerShipTrail() {
     //  Add an emitter for the ship's trail
-    shipTrail = game.add.emitter(player.x, player.y + 10, 400);
-    shipTrail.width = 10;
+    shipTrail = game.add.emitter(player.x, player.y + 10, 600);
+    shipTrail.width = 15;
     shipTrail.makeParticles('bullet');
     shipTrail.setXSpeed(30, -30);
     shipTrail.setYSpeed(200, 180);
@@ -39,7 +39,7 @@ function startPlayerShipTrail() {
 
 function keepShipTrail() {
     shipTrail.x = player.x;
-    shipTrail.y = player.y;
+    shipTrail.y = player.y + 35;
 }
 
 function playerExplosion() {
@@ -160,8 +160,8 @@ function fireBullet() {
 
         case 2:
             if (game.time.now > bulletTimer) {
-                var BULLET_SPEED = 400;
-                var BULLET_SPACING = 550;
+                var BULLET_SPEED = 550;
+                var BULLET_SPACING = 250;
 
 
                 for (var i = 0; i < 3; i++) {

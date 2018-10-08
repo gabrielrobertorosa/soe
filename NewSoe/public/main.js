@@ -118,6 +118,16 @@ function update() {
   }
 
   //TODO: eixo y
+  if (player.y > game.height - 50) {
+    player.y = game.height - 50;
+    player.body.velocity.y = 0;
+  }
+  if (player.y < 50) {
+    player.y = 50;
+    player.body.velocity.y = 0;
+  }
+
+
 
   //  Fire bullet
   keepBullet();

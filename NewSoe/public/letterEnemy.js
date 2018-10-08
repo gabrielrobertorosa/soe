@@ -5,8 +5,8 @@ function startLetterEnemy() {
     blueEnemies.createMultiple(30, 'enemy-blue');
     blueEnemies.setAll('anchor.x', 0.5);
     blueEnemies.setAll('anchor.y', 0.5);
-    blueEnemies.setAll('scale.x', 0.5);
-    blueEnemies.setAll('scale.y', 0.5);
+    //blueEnemies.setAll('scale.x', 0.5);
+    //blueEnemies.setAll('scale.y', 0.5);
     blueEnemies.setAll('angle', 180);
     blueEnemies.forEach(function (enemy) {
         enemy.damageAmount = 40;
@@ -34,7 +34,7 @@ function launchBlueEnemy() {
     var verticalSpeed = 180;
     var spread = 60;
     var frequency = 70;
-    var verticalSpacing = 70;
+    var verticalSpacing = 90;
     var numEnemiesInWave = 5;
   
     //  Launch wave
@@ -58,7 +58,7 @@ function launchBlueEnemy() {
   
           //  Squish and rotate ship for illusion of "banking"
           bank = Math.cos((this.y + 60) / frequency)
-          this.scale.x = 0.5 - Math.abs(bank) / 8;
+          //this.scale.x = 0.5 - Math.abs(bank) / 8;
           this.angle = 180 - bank * 2;
   
           //  Fire
