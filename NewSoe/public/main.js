@@ -33,8 +33,7 @@ var bossLaunchTimer,
   bossYdirection = -1;
 
 jQuery.getJSON("words.json", function (data) {
-  console.log(data.nouns);
-  game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-demo', { preload: preload, create: create, update: update, render: render });
+  game = new Phaser.Game(800, 600, Phaser.AUTO, 'canvasTest', { preload: preload, create: create, update: update, render: render });
 });
 
 function preload() {
@@ -204,3 +203,4 @@ function setExplosionPool() {
     explosion.animations.add('explosion');
   });
 }
+
