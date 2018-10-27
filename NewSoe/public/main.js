@@ -33,7 +33,7 @@ var bossLaunchTimer,
   bossYdirection = -1;
 
 jQuery.getJSON("words.json", function (data) {
-  game = new Phaser.Game(800, 600, Phaser.AUTO, 'canvasTest', { preload: preload, create: create, update: update, render: render });
+  game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'canvasTest', { preload: preload, create: create, update: update, render: render });
 });
 
 function preload() {
@@ -52,7 +52,7 @@ function preload() {
 
 function create() {
   //  The scrolling starfield background
-  starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
+  starfield = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'starfield');
   startBulletPlayer();
   startPlayer();
   startEnemy();
@@ -79,14 +79,14 @@ function create() {
   shields.render();
 
   //  word stat
-  word = game.add.bitmapText(10, 530, 'spacefont', 'testeeee', 30, );
+  word = game.add.bitmapText(10, window.innerHeight -90, 'spacefont', 'testeeee', 30, );
   word.render = function () {
     word.text = spaceletter + spaceletter;
   };
   word.render();
 
   //  Score
-  scoreText = game.add.bitmapText(10, 10, 'spacefont', '', 30);
+  scoreText = game.add.bitmapText(30, 10, 'spacefont', '', 30);
   scoreText.render = function () {
     scoreText.text = 'Score ' + score;
   };
