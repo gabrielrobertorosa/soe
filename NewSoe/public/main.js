@@ -33,6 +33,7 @@ var bossLaunchTimer,
   bossYdirection = -1;
 
 jQuery.getJSON("words.json", function (data) {
+  arrayOfWord = data.nouns;
   game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, 'canvasTest', { preload: preload, create: create, update: update, render: render });
 });
 
@@ -61,16 +62,16 @@ function create() {
   createBoss();
   setBossConfiguration();
   setBossBooster();
-
+  
   cursors = game.input.keyboard.createCursorKeys();
   fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
+  
   startPlayerShipTrail();
   setExplosionPool();
   playerExplosion();
   bigExplosionBoss();
 
-
+  
   //  Shields stat
   shields = game.add.bitmapText(game.world.width - 290, 10, 'spacefont', '' + player.health + '%', 30);
   shields.render = function () {
@@ -79,24 +80,25 @@ function create() {
   shields.render();
 
   //  word stat
-  word = game.add.bitmapText(10, window.innerHeight -90, 'spacefont', 'testeeee', 30, );
-  word.render = function () {
-    word.text = spaceletter + spaceletter;
+  word = game.add.bitmapText(10, window.innerHeight -90, 'spacefont', '_ _ _', 30, );
+  word.render = function (x) {
+    word.text = x;
   };
-  word.render();
-
+  //word.render("");
+  
   //  Score
   scoreText = game.add.bitmapText(30, 10, 'spacefont', '', 30);
   scoreText.render = function () {
     scoreText.text = 'Score ' + score;
   };
   scoreText.render();
-
+  
   //  Game over text
   gameOver = game.add.bitmapText(game.world.centerX, game.world.centerY, 'spacefont', 'GAME OVER!', 100);
   gameOver.x = gameOver.x - gameOver.textWidth / 2;
   gameOver.y = gameOver.y - gameOver.textHeight / 3;
   gameOver.visible = false;
+  sort();
 }
 
 function update() {
