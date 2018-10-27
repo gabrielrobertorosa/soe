@@ -10,13 +10,13 @@ arrayOfLetters = [];
 function sort() {
     var randonPosition = Math.floor((Math.random() * arrayOfWord.length));
     sortedWord = arrayOfWord[randonPosition];
+    arrayOfUnderscore = [];
     arrayOfWord.splice(randonPosition, 1);
     arrayOfLetters = sortedWord.split('');
     for (var i = 0; i < arrayOfLetters.length; i++) {
-        arrayOfUnderscore.push(placeholder);
-        underscoreWord += placeholder;
+        arrayOfUnderscore.push(placeholder);        
     }
-    word.render(underscoreWord);
+    word.render(arrayOfUnderscore.toString().replace(/[,]/g, ""));
 };
 
 function changeUnderscore(letter) {
@@ -31,7 +31,7 @@ function sortLetters() {
     if (arrayOfLetters.length == 0) return;
     var qtd = arrayOfLetters.length;
     const sort = Math.floor(Math.random() * qtd);
-    const letter = arrayOfLetters[sort];
+    const letter = arrayOfLetters[sort];   
     arrayOfLetters.splice(sort, 1);
     changeUnderscore(letter);
     return letter;

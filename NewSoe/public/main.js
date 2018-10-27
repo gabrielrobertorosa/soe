@@ -192,6 +192,7 @@ function restart() {
   greenEnemySpacing = 1000;
   blueEnemyLaunched = false;
   bossLaunched = false;
+  sort();
 }
 
 function setExplosionPool() {
