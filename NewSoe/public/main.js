@@ -49,12 +49,14 @@ function preload() {
   game.load.bitmapFont('spacefont', '/assets/font.png', '/assets/font.xml');
   game.load.image('boss', './assets/boss.png');
   game.load.image('deathRay', './assets/death-ray.png');
+  game.load.audio('fire', './assets/fire.wav');
 }
 
 function create() {
   //  The scrolling starfield background
   starfield = game.add.tileSprite(0, 0, window.innerWidth, window.innerHeight, 'starfield');
-  startBulletPlayer();
+  fire = game.add.audio('fire');
+  startBulletPlayer();  
   startPlayer();
   startEnemy();
   startBulletLetterEnemy();
@@ -62,6 +64,24 @@ function create() {
   createBoss();
   setBossConfiguration();
   setBossBooster();
+
+  //Audio
+  game.load.audio('fire', 'assets/fire.WAV');
+
+  // *true* param enables looping
+  music = new Phaser.Sound(game,'fire',1,true);
+  
+  music.play();
+
+  function playFx(key) {
+
+    switch (key.keyCode)
+    {
+        case Phaser.Keyboard.SPACEBAR:
+            fire.play();
+            break;
+                }
+}
   
   cursors = game.input.keyboard.createCursorKeys();
   fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);

@@ -81,6 +81,9 @@ function hitEnemy(enemy, bullet) {
         enemy.damage(enemy.damageAmount);
     }
     bullet.kill();
+    if(enemy.key == "enemy-blue"){
+        sortLetters();
+    }
 
     // Increase score
     score += enemy.damageAmount * 10;
