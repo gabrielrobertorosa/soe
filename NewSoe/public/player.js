@@ -1,5 +1,5 @@
 function startPlayer() {
-    player = game.add.sprite(400, 500, 'ship');
+    player = game.add.sprite(window.innerWidth/2, window.innerHeight/2, 'ship');
     //CHANGE 
     player.health = 100;
     player.anchor.setTo(0.5, 0.5);
@@ -69,7 +69,7 @@ function enemyHitsPlayer(player, bullet) {
     }
 }
 
-function hitEnemy(enemy, bullet) {
+function hitEnemy(enemy, bullet) {    
     var explosion = explosions.getFirstExists(false);
     explosion.reset(bullet.body.x + bullet.body.halfWidth, bullet.body.y + bullet.body.halfHeight);
     explosion.body.velocity.y = enemy.body.velocity.y;
@@ -102,16 +102,16 @@ function hitEnemy(enemy, bullet) {
         greenEnemySpacing *= 2;
     }
 
-    //  Launch boss
-    if (!bossLaunched && score > 15000) {
-        greenEnemySpacing = 5000;
-        blueEnemySpacing = 12000;
-        //  dramatic pause before boss
-        game.time.events.add(2000, function () {
-            bossLaunched = true;
-            launchBoss();
-        });
-    }
+    // //  Launch boss
+    // if (!bossLaunched && score > 15000) {
+    //     greenEnemySpacing = 5000;
+    //     blueEnemySpacing = 12000;
+    //     //  dramatic pause before boss
+    //     game.time.events.add(2000, function () {
+    //         bossLaunched = true;
+    //         launchBoss();
+    //     });
+    // }
 
     //  Weapon upgrade
     if (score > 5000 && player.weaponLevel < 2) {
@@ -219,6 +219,8 @@ function checkGameOver() {
     if (!player.alive && gameOver.visible === false) {
         gameOver.visible = true;
         gameOver.alpha = 0;
+        $(".modal").modal('hide');
+        game.paused = false;
         var fadeInGameOver = game.add.tween(gameOver);
         fadeInGameOver.to({ alpha: 1 }, 1000, Phaser.Easing.Quintic.Out);
         fadeInGameOver.onComplete.add(setResetHandlers);

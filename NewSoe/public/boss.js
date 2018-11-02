@@ -66,8 +66,17 @@ function setBossConfiguration() {
                 booster.kill();
                 boss.dying = false;
                 bossDeath.on = false;
+                let rightWord = game.add.bitmapText(game.world.centerX, game.world.centerY, 'spacefont',sortedWord , 100);
+                rightWord.x = rightWord.x - rightWord.textWidth / 2;
+                rightWord.y = rightWord.y - rightWord.textHeight / 3;
+                game.time.events.add(2000, function () {
+                    game.add.tween(rightWord).to({ y: 0 }, 1500, Phaser.Easing.Linear.None, true); 
+                    game.add.tween(rightWord).to({ alpha: 0 }, 1500, Phaser.Easing.Linear.None, true); 
+                }, this);
+                resetAllWordState();
+
                 //  queue next boss
-                bossLaunchTimer = game.time.events.add(game.rnd.integerInRange(bossSpacing, bossSpacing + 5000), launchBoss);
+                //bossLaunchTimer = game.time.events.add(game.rnd.integerInRange(bossSpacing, bossSpacing + 5000), launchBoss);
             });
 
             //  reset pacing for other enemies
